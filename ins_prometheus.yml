@@ -38,10 +38,11 @@
     file:
      path: /opt/prometheus-2.21.0.linux-amd64
      state: absent
-  - name: prometheus yml file edit
-    copy: 
-     content: pn_yml
+  - name: Specifying a destination path
+    fetch:
+     src: pn_yml
      dest: /tmp/
+  - name: prometheus yml file copy
     shell: cat /tmp/pn_yml >>/etc/prometheus/prometheus.yml 
   - name: Copy systemd init file
     template:

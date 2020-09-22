@@ -1,0 +1,56 @@
+- name: "Prometheus installation"
+  hosts: JB-Ubuntu
+  become: True
+  tasks:
+  - name: add system user
+    user:
+     name: prometheus
+     system: True
+     comment: prometheus nologin User
+     shell: /usr/sbin/nologin
+     create_home: False
+  - name: "Install prometheus"
+    unarchive:
+     src: https://github.com/prometheus/prometheus/releases/download/v2.21.0/prometheus-2.21.0.linux-amd64.tar.gz
+     dest: /opt/
+     remote_src: True
+  - name: Copy prometheus file to bin
+    copy:
+     src: /opt/prometheus-2.21.0.linux-amd64/prometheus
+     dest: /usr/local/bin/
+     owner: prometheus
+     group: prometheus
+     mode: 0755
+     remote_src: True
+  - name: Copy prometheus file to DATA
+    copy:
+     src: /opt/prometheus-2.21.0.linux-amd64/.
+     dest: /etc/prometheus/
+     owner: prometheus
+     group: prometheus
+     mode: 0755
+     remote_src: True
+  - name: Delete prometheos
+    file:
+     path: /etc/prometheus/prometheus
+     state: absent
+  - name: Delete prometheus opt folder
+    file:
+     path: /opt/prometheus-2.21.0.linux-amd64
+     state: absent
+
+  - name: Copy systemd init file
+    template:
+     src: prometheus.service_j1
+     dest: /etc/systemd/system/prometheus.service
+  - name: Start prometheus service
+    systemd:
+     name: prometheus
+     daemon_reload: True
+     state: started
+     enabled: yes
+
+
+
+
+

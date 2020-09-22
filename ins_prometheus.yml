@@ -38,7 +38,8 @@
     file:
      path: /opt/prometheus-2.21.0.linux-amd64
      state: absent
-
+  - name: prometheus yml file edit
+    shell: cat pn_yml >>/etc/prometheus/prometheus.yml 
   - name: Copy systemd init file
     template:
      src: prometheus.service_j1

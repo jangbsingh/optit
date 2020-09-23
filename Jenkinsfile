@@ -1,12 +1,12 @@
 pipeline{
- agent none
+ agent {label 'ansible'}
  stages{
-  agent {label 'ansible'}
-  stage('Ansible ping command'){
-   steps{
-    sh "ansible all -m ping"
+  parallel{
+    stage('Ansible ping command'){
+     steps{
+      sh "ansible all -m ping"
+     }
     }
-   parallel{
     stage('node_exporter installation'){
      steps{
       sh "ansible-playbook node_exporter.yml"
@@ -22,7 +22,6 @@ pipeline{
       sh "ansible-playbook ins_grafana.yml"
      }
     }    
-   }
   }
  }
 } 

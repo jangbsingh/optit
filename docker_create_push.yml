@@ -12,6 +12,6 @@
      dest: /opt/
   - name: Create docker image
     docker_image:
-     dockerfile: /opt/Dockerfile
+     path: /opt/Dockerfile
      name: jb_prometheus
    

@@ -4,12 +4,12 @@
   tasks:
   - name: copy promtheus yml file 
     copy: 
-     src: prometheus.yml
+     src: /jb-ansible/workspace/optit/prometheus.yml
      dest: /opt/
      remote_src: True
   - name: copy docker file
     copy:
-     src: Dockerfile
+     src: /jb-ansible/workspace/optit/Dockerfile
      dest: /opt/
      remote_src: True
   - name: Create docker image

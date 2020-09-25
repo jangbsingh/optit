@@ -4,7 +4,12 @@
   tasks:
   - name: copy promtheus yml file 
     copy: 
-     src: prometheus.yml, Dockerfile
+     src: prometheus.yml
+     dest: /opt/
+     remote_src: True
+  - name: copy docker file
+    copy:
+     src: Dockerfile
      dest: /opt/
      remote_src: True
   - name: Create docker image

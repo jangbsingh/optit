@@ -1,0 +1,14 @@
+- name: Create docker and push
+  hosts: JB-Ubuntu
+  become: True
+  tasks:
+  - name: copy promtheus yml file 
+    copy: 
+     src: prometheus.yml, Dockerfile
+     dest: /opt/
+     remote_src: True
+  - name: Create docker image
+    docker_image:
+     path: /opt/
+     name: jb_prometheus
+   

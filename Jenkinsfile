@@ -15,9 +15,9 @@ pipeline{
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml'"
+      sh "ansible JB-Centos-jenkins -a 'kubectl apply -f /opt/nginx_deployment.yml'"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml'"
+      sh "ansible JB-Centos-jenkins -a 'kubectl create -f /opt/nginx_deployment.yml'"
      }
     }
    }
@@ -26,9 +26,9 @@ pipeline{
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_service.yml'"
+      sh "ansible JB-Centos-jenkins -a 'kubectl apply -f /opt/nginx_service.yml'"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_service.yml'"
+      sh "ansible JB-Centos-jenkins -a 'kubectl create -f /opt/nginx_service.yml'"
      }
     }
    }

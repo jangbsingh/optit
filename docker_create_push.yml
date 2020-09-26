@@ -17,7 +17,7 @@
   - name: Tag and push to docker hub
     docker_image:
      name: jb_prometheus:latest
-     repository: https://hub.docker.com/repository/docker/jangbsingh/jb_prometheus 
+     repository: jangbsingh/jb_prometheus 
      tag: v1.1
      push: yes
   - name: remove image 

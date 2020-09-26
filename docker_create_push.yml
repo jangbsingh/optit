@@ -21,16 +21,16 @@
      email: jangbahadur0@gmail.com
   - name: Tag and push to docker hub
     docker_image:
-     name: jb_prometheus:latest
+     name: jb_prometheus
      repository: jangbsingh/jb_prometheus 
-     tag: v1.1
+     tag: latest
      push: yes
   - name: remove image 
     docker_image:
      state: absent
-     name: jb_prometheus
+     name: jangbsingh/jb_prometheus
      tag: latest
   - name: pull image
     docker_image:
-     name: jb_promethus:v1.1
+     name: jangbsingh/jb_prometheus:latest
   

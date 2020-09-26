@@ -17,7 +17,7 @@
   - name: Log into DockerHub
     docker_login:
      username: jangbsingh
-     password: jang@7376
+     password: Jang@7376
      email: jangbahadur0@gmail.com
   - name: Tag and push to docker hub
     docker_image:

@@ -16,7 +16,7 @@ pipeline{
     script{
      try{
       sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml /opt/nginx_service.yml'"
-     }catcch(error){
+     }catch(error){
       sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml /opt/
 nginx_service.yml'"
      }

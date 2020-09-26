@@ -14,7 +14,7 @@
     docker_image:
      path: /opt/
      name: jb_prometheus
-     tag: v2.0
+     tag: v3.0
   - name: Log into DockerHub
     docker_login:
      username: jangbsingh
@@ -24,14 +24,14 @@
     docker_image:
      name: jb_prometheus
      repository: jangbsingh/jb_prometheus 
-     tag: latest
+     tag: v3.0
      push: yes
   - name: remove image 
     docker_image:
      state: absent
      name: jangbsingh/jb_prometheus
-     tag: latest
+     tag: v3.0
   - name: pull image
     docker_image:
-     name: jangbsingh/jb_prometheus:latest
+     name: jangbsingh/jb_prometheus:v3.0
   

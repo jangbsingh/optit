@@ -10,6 +10,18 @@ pipeline{
    steps{
      sh "ansible-playbook kube-create.yml"
     }
-   } 
+   }
+  stage('create nginx deployment and service by kubernetes'){
+   steps{
+    script{
+     try{
+      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml /opt/nginx_service.yml'"
+     }catcch(error){
+      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml /opt/
+nginx_service.yml'"
+     }
+    }
+   }
+  } 
  }
 } 

@@ -13,5 +13,5 @@
   - name: Create docker image
     docker_image:
      path: /opt/
-     name: jb_prometheus
+     name: jangbsingh/jb_prometheus:v02
    

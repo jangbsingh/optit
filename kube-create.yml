@@ -1,5 +1,5 @@
 - name: copy kube yml file
-  hosts: JB-Centos-jenkins
+  hosts: JB-Ubuntu
   become: True
   tasks:
   - name: copy nginx deplyment yml file 

@@ -1,4 +1,4 @@
-appVersion: apps/v1beta2
+appVersion: apps/v1
 kind: Deployment 
 metadata:
  name: nginx-deployment

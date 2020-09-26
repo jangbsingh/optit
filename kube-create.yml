@@ -1,0 +1,13 @@
+- name: copy kube yml file
+  hosts: JB-Ubuntu
+  become: True
+  tasks:
+  - name: copy nginx deplyment yml file 
+    copy: 
+     src: nginx_deployment.yml
+     dest: /opt/
+  - name: copy nginx service yml file
+    copy:
+     src: nginx_service.yml
+     dest: /opt/
+  

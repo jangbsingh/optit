@@ -6,9 +6,9 @@ pipeline{
     sh "ansible all -m ping"
     }
    }
-  stage('copy kube yml file'){
+  stage('DOcker create and push remove pull'){
    steps{
-     sh "ansible-playbook kube-create.yml"
+     sh "ansible-playbook docker_create_push.yml"
     }
    } 
  }

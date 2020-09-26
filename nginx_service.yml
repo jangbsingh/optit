@@ -1,0 +1,11 @@
+appVersion: v1
+kind: service
+metadata:
+ name: nginx-service
+spec:
+ selector:
+  app: nginx
+ ports:
+ - portocol: TCP
+   port: 80
+   tartgetPort: 8080

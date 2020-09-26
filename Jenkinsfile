@@ -6,12 +6,9 @@ pipeline{
     sh "ansible all -m ping"
     }
    }
-  stage('Docker hub login and create'){
+  stage('DOcker create and push remove pull'){
    steps{
-    withCredentials([string(credentialsId: 'dockerhub', variable: 'dockerhub')]) {
-      sh "ansible JB-Ubuntu -a 'docker login -u jangbsingh -p ${dockerhub}'"
-      sh "ansible-playbook docker_create_push.yml"
-    }
+     sh "ansible-playbook docker_create_push.yml"
     }
    } 
  }

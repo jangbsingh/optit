@@ -8,7 +8,9 @@ pipeline{
    }
   stage('Docker hub login'){
    steps{
-    sh "ansible JB-Ubuntu -a 'docker login -u jangbsingh -p ${dockerhub}'"
+    withCredentials([string(credentialsId: 'dockerhub', variable: '')]) {
+      sh "ansible JB-Ubuntu -a 'docker login -u jangbsingh -p ${dockerhub}'"
+    }
    }
   }
   stage('Docker file create'){

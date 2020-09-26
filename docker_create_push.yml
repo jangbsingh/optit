@@ -13,5 +13,19 @@
   - name: Create docker image
     docker_image:
      path: /opt/
-     name: jangbsingh/jb_prometheus:v02
-   
+     name: jb_prometheus
+  - name: Tag and push to docker hub
+    docker_image:
+     name: jb_prometheus
+     repository: jangbsingh 
+     tag: v1.1
+     push: yes
+  - name: remove image 
+    docker_image:
+     state: absent
+     name: jb_prometheus
+     tag: latest
+  - name: pull image
+    docker_image:
+     name: jb_promethus:v1.1
+  

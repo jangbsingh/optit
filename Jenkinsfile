@@ -11,16 +11,27 @@ pipeline{
      sh "ansible-playbook kube-create.yml"
     }
    }
-  stage('create nginx deployment and service by kubernetes'){
+  stage('create nginx deployment by kubernetes'){
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml /opt/nginx_service.yml'"
+      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml'"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml /opt/nginx_service.yml'"
+      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml'"
      }
     }
    }
   } 
+  stage('create nginx service by kubernetes'){
+   steps{
+    script{
+     try{
+      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_service.yml'"
+     }catch(error){
+      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_service.yml'"
+     }
+    }
+   }
+  }
  }
 } 

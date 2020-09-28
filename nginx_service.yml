@@ -6,6 +6,6 @@ spec:
  selector:
   app: nginx
  ports:
-  - portocol: TCP
+  - protocol: TCP
     port: 80
     tartgetPort: 8080

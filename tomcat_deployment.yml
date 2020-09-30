@@ -16,6 +16,6 @@ spec:
   spec:
    containers:
    - name: tomcat
-     image: jangbsingh/jbs-tomcat:latest
+     image: jangbsingh/jbs-tomcat:v1
      ports:
      - containerPort: 8080

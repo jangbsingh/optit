@@ -11,24 +11,46 @@ pipeline{
      sh "ansible-playbook kube-create.yml"
     }
    }
-  stage('create nginx and tomcat deployment by kubernetes'){
+  stage('create nginx deployment by kubernetes'){
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml /opt/tomcat_deployment.yml'"
+      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml '"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml /opt/tomcat_deployment.yml'"
+      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml'"
      }
     }
    }
   } 
-  stage('create nginx and tomcat service by kubernetes'){
+  stage('create nginx service by kubernetes'){
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_service.yml /opt/tomcat_service.yml'"
+      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_service.yml '"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_service.yml /opt/tomcat_service.yml'"
+      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_service.yml "
+     }
+    }
+   }
+  }
+  stage('create tomcat deployment by kubernetes'){
+   steps{
+    script{
+     try{
+      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/tomcat_deployment.yml'"
+     }catch(error){
+      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/tomcat_deployment.yml'"
+     }
+    }
+   }
+  } 
+  stage('create tomcat service by kubernetes'){
+   steps{
+    script{
+     try{
+      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/tomcat_service.yml'"
+     }catch(error){
+      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/tomcat_service.yml'"
      }
     }
    }

@@ -10,4 +10,11 @@
     copy:
      src: nginx_service.yml
      dest: /opt/
-  
+  - name: copy tomcat deplyment yml file 
+    copy: 
+     src: tomcat_deployment.yml
+     dest: /opt/
+  - name: copy tomcat service yml file
+    copy:
+     src: tomcat_service.yml
+     dest: /opt/

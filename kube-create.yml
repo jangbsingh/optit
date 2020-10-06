@@ -23,4 +23,4 @@
      src: civo-k83-kubeconfig
      dest: /opt/
   - name: Run command civo config
-    command: export KUBECONFIG=/opt/civo-k83-kubeconfig
+    command: "export KUBECONFIG=/opt/civo-k83-kubeconfig"

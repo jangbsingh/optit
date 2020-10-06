@@ -13,7 +13,7 @@ pipeline{
    }
   stage('create nginx deployment by kubernetes'){
    steps{
-    sh "ansible JB-local -m ansible.builtin.shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
+    sh "ansible JB-local -m shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
     script{
      try{
       sh "ansible JB-local -a 'kubectl apply -f /opt/nginx_deployment.yml '"
@@ -25,7 +25,7 @@ pipeline{
   } 
   stage('create nginx service by kubernetes'){
    steps{
-    sh "ansible JB-local -m ansible.builtin.shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
+    sh "ansible JB-local -m shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
     script{
      try{
       sh "ansible JB-local -a 'kubectl apply -f /opt/nginx_service.yml '"
@@ -37,7 +37,7 @@ pipeline{
   }
   stage('create tomcat deployment by kubernetes'){
    steps{
-    sh "ansible JB-local -m ansible.builtin.shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
+    sh "ansible JB-local -m shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
     script{
      try{
       sh "ansible JB-local -a 'kubectl apply -f /opt/tomcat_deployment.yml'"
@@ -49,7 +49,7 @@ pipeline{
   } 
   stage('create tomcat service by kubernetes'){
    steps{
-    sh "ansible JB-local -m ansible.builtin.shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
+    sh "ansible JB-local -m shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
     script{
      try{
       sh "ansible JB-local -a 'kubectl apply -f /opt/tomcat_service.yml'"
@@ -58,6 +58,14 @@ pipeline{
      }
     }
    }
+  }
+  stage('Status of kube civo'){
+   steps{
+    sh "ansible JB-local -m shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
+    sh "ansible JB-local -a 'kubectl get pods'"
+    sh "ansible JB-local -a 'kubectl get svc'""
+    sh "ansible JB-local -a 'kubectl get nodes'""
+   }  
   }
  }
 } 

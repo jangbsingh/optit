@@ -18,6 +18,3 @@
     copy:
      src: tomcat_service.yml
      dest: /opt/
-  - name: copy civo config file
-    copy:
-     src: civo-k83-kubeconfig

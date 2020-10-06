@@ -63,8 +63,8 @@ pipeline{
    steps{
     sh "ansible JB-local -m shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
     sh "ansible JB-local -a 'kubectl get pods'"
-    sh "ansible JB-local -a 'kubectl get svc'""
-    sh "ansible JB-local -a 'kubectl get nodes'""
+    sh "ansible JB-local -a 'kubectl get svc'"
+    sh "ansible JB-local -a 'kubectl get nodes'"
    }  
   }
  }

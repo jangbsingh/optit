@@ -18,5 +18,5 @@
     copy:
      src: tomcat_service.yml
      dest: /opt/
-  - shell: 'export KUBECONFIG=/opt/civo-k83-kubeconfig'
-    sudo: yes
+  - name: Export environment variable
+    shell: export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig 

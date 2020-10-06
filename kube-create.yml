@@ -21,6 +21,3 @@
   - name: copy civo config file
     copy:
      src: civo-k83-kubeconfig
-     dest: /opt/
-  - name: Run command civo config
-    command: "export KUBECONFIG=/opt/civo-k83-kubeconfig"

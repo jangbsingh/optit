@@ -11,13 +11,18 @@ pipeline{
      sh "ansible-playbook kube-create.yml"
     }
    }
+  stage('kube run on civo add in local'){
+   steps{
+     sh "ansible JB-local -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig '"
+    }
+   }
   stage('create nginx deployment by kubernetes'){
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_deployment.yml '"
+      sh "ansible JB-local -a 'kubectl apply -f /opt/nginx_deployment.yml '"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_deployment.yml'"
+      sh "ansible JB-local -a 'kubectl create -f /opt/nginx_deployment.yml'"
      }
     }
    }
@@ -26,9 +31,9 @@ pipeline{
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/nginx_service.yml '"
+      sh "ansible JB-local -a 'kubectl apply -f /opt/nginx_service.yml '"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/nginx_service.yml "
+      sh "ansible JB-local -a 'kubectl create -f /opt/nginx_service.yml "
      }
     }
    }
@@ -37,9 +42,9 @@ pipeline{
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/tomcat_deployment.yml'"
+      sh "ansible JB-local -a 'kubectl apply -f /opt/tomcat_deployment.yml'"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/tomcat_deployment.yml'"
+      sh "ansible JB-local -a 'kubectl create -f /opt/tomcat_deployment.yml'"
      }
     }
    }
@@ -48,9 +53,9 @@ pipeline{
    steps{
     script{
      try{
-      sh "ansible JB-Ubuntu -a 'kubectl apply -f /opt/tomcat_service.yml'"
+      sh "ansible JB-local -a 'kubectl apply -f /opt/tomcat_service.yml'"
      }catch(error){
-      sh "ansible JB-Ubuntu -a 'kubectl create -f /opt/tomcat_service.yml'"
+      sh "ansible JB-local -a 'kubectl create -f /opt/tomcat_service.yml'"
      }
     }
    }

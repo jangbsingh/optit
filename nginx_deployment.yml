@@ -16,6 +16,6 @@ spec:
   spec:
    containers:
    - name: nginx
-     image: nginx:latest
+     image: jangbsingh/jb-nginx:v2
      ports:
      - containerPort: 80

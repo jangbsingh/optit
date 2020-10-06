@@ -13,7 +13,7 @@ pipeline{
    }
   stage('civo start'){
    steps{
-     sh "ansible JB-local -m ansible.builtin.shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
+     sh "ansible JB-local -m shell -a 'export KUBECONFIG=/home/optit/Downloads/civo-k83-kubeconfig'"
     }
    }
   stage('create nginx deployment by kubernetes'){

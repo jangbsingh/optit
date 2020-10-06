@@ -11,11 +11,6 @@ pipeline{
      sh "ansible-playbook kube-create.yml"
     }
    }
-  stage('kube run on civo add in local'){
-   steps{
-     sh "ansible JB-local -a 'export KUBECONFIG=civo-k83-kubeconfig'"
-    }
-   }
   stage('create nginx deployment by kubernetes'){
    steps{
     script{
